@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "RapidTabOpener",
+  "version": "1.0",
+  
+  "description": "A simple browser addon that opens the most frequently used sites in a click of a button.",
+  
+  "icons": {
+    "64": "icons/tabs-64.png",
+      "128": "icons/tabs-128.png"
+  },
+  
+  "permissions": [
+    "tabs"
+  ],
+  
+  "browser_action": {
+    "default_icon": {
+      "64": "icons/tabs-64.png",
+      "128": "icons/tabs-128.png"
+    }
+  },
+  
+  "background": {
+    "scripts": ["background.js"]
+  }
+  
+}
