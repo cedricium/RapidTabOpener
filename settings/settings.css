@@ -1,0 +1,17 @@
+html,
+body {
+  margin: 0 auto;
+  color: #404040;
+}
+
+span * {
+  margin: 2px 5px 0px 0px;
+}
+
+#info {
+  margin: 0 auto;
+  line-height: 0px;
+  
+  font-family: Fira Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Droid Sans,Helvetica Neue,sans-serif;
+  font-size: 90%;
+}
