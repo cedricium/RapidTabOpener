@@ -11,7 +11,8 @@
   },
   
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
   ],
   
   "browser_action": {
@@ -23,6 +24,11 @@
   
   "background": {
     "scripts": ["background.js"]
+  },
+  
+  "options_ui": {
+    "browser_style": false,
+    "page": "settings/settings.html"
   }
   
 }
