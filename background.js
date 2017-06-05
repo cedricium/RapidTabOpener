@@ -57,27 +57,46 @@ function openIncognitoWindow() {
  * at work.
  */
 function openTabs() {  
-  var a = browser.tabs.create({
-        active: true,
-        index: 0,
-        url: "https://workforcenow.adp.com"
-      }),
-      
-      b = browser.tabs.create({
-        active: false,
-        index: 1,
-        url: "https://gmail.com"
-      }),
-      
-      c = browser.tabs.create({
-        active: false,
-        index: 2,
-//        url: " TESTRAILS URL HERE "
-      }),
+//  var a = browser.tabs.create({
+//        active: true,
+//        index: 0,
+//        url: "https://workforcenow.adp.com"
+//      }),
+//      
+//      b = browser.tabs.create({
+//        active: false,
+//        index: 1,
+//        url: "https://gmail.com"
+//      }),
+//      
+//      c = browser.tabs.create({
+//        active: false,
+//        index: 2,
+////        url: " TESTRAILS URL HERE "
+//      }),
+//
+//      d = browser.tabs.create({
+//        active: false,
+//        index: 3,
+//        url: "http://jira.surfcrew.com"
+//      });
+  
+  var urls = browser.storage.local.get("urls");
+  urls.then(onGot);
+}
 
-      d = browser.tabs.create({
-        active: false,
-        index: 3,
-        url: "http://jira.surfcrew.com"
-      });
+function onGot(item) {
+  console.log(item.urls);
+  
+  var urls = item.urls;
+  
+  for (var i = 0; i < urls.length; i++) {
+    var url = urls[i];
+    console.log(url);
+    
+    browser.tabs.create({
+      index: i,
+      url: url
+    });
+  }
 }
