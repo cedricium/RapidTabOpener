@@ -1,4 +1,4 @@
-var urls = document.getElementById("urls");  
+var URLplaceholder = document.getElementById("urls");  
 
 // Add button functionality
 function add() {
@@ -6,7 +6,7 @@ function add() {
   
   var field = document.createElement("input");
   field.setAttribute("type", "url");
-  field.setAttribute("placeholder", "Enter URL");
+  field.setAttribute("placeholder", "http://");
   
   var edit = document.createElement("button");
   edit.innerHTML += "Edit";
@@ -27,7 +27,7 @@ function add() {
   for (var i = 0; i < newURL.length; i++)
     span.appendChild(newURL[i]);
   
-  urls.appendChild(span);
+  URLplaceholder.appendChild(span);
   
   edit.addEventListener("click", function() {
     editURL(field);
@@ -40,12 +40,47 @@ function add() {
 
 document.getElementById("add").addEventListener("click", add);
 
+var urls = [];
 
 // Save button functionality
 function save() {
   var inputs = document.getElementsByTagName("input");
   for (var i = 0; i < inputs.length; i++) {
+    // disables editing of input fields
     inputs[i].disabled = true;
+    
+    if (inputs[i].value !== urls[i])
+      urls[i] = inputs[i].value;
+  }
+  
+  validateURLs();
+  
+  browser.storage.local.set({urls});
+}
+
+function eliminateDuplicates(arr) {
+  var i,
+      len = arr.length,
+      out = [],
+      obj = {};
+  
+  for (i = 0; i < len; i++) {
+    obj[arr[i]] = 0;
+  }
+  
+  for (i in obj) {
+    out.push(i);
+  }
+  
+  return out;
+}
+
+function validateURLs() {
+  for (var i = 0; i < urls.length; i++) {
+    if (!urls[i].startsWith("http"))
+      urls[i] = "http://" + urls[i];
+    
+    console.log(urls[i]);
   }
 }
 
@@ -60,5 +95,16 @@ function editURL(field) {
 
 // Remove button functionality
 function removeURL(span) {
-  urls.removeChild(span);
+  // value of input field, aka the URL
+  var urlToRemove = span.firstChild.value,
+      // position in urls[] that URL is located
+      index = urls.indexOf(urlToRemove);
+  
+  urls.splice(index, 1);
+  
+  console.log(urls);
+  
+  URLplaceholder.removeChild(span);
+  
+  browser.storage.local.set({urls});
 }
