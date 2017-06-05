@@ -108,3 +108,25 @@ function removeURL(span) {
   
   browser.storage.local.set({urls});
 }
+
+function loadSavedURLs(item) {
+  var savedURLs = item.urls,
+      inputs = document.getElementsByTagName("input");
+  
+  for (var i = 0; i < savedURLs.length; i++) {
+    add();
+    
+    console.log("Number of input fields: " + inputs.length);
+    console.log(savedURLs[i]);
+    
+    console.log("Last input field: " + (inputs.length - 1).value);
+    inputs[inputs.length - 1].value = savedURLs[i];
+    
+    save();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  var savedURLs = browser.storage.local.get("urls");
+  savedURLs.then(loadSavedURLs);
+});
