@@ -80,7 +80,7 @@ function validateURLs() {
     if (!urls[i].startsWith("http"))
       urls[i] = "http://" + urls[i];
     
-    console.log(urls[i]);
+//    console.log(urls[i]);
   }
 }
 
@@ -102,7 +102,7 @@ function removeURL(span) {
   
   urls.splice(index, 1);
   
-  console.log(urls);
+//  console.log(urls);
   
   URLplaceholder.removeChild(span);
   
@@ -116,10 +116,10 @@ function loadSavedURLs(item) {
   for (var i = 0; i < savedURLs.length; i++) {
     add();
     
-    console.log("Number of input fields: " + inputs.length);
-    console.log(savedURLs[i]);
-    
-    console.log("Last input field: " + (inputs.length - 1).value);
+//    console.log("Number of input fields: " + inputs.length);
+//    console.log(savedURLs[i]);
+//    
+//    console.log("Last input field: " + (inputs.length - 1).value);
     inputs[inputs.length - 1].value = savedURLs[i];
     
     save();
