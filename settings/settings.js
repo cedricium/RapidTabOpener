@@ -6,6 +6,7 @@ function add() {
   
   var field = document.createElement("input");
   field.setAttribute("type", "url");
+  field.setAttribute("name", "url");
   field.setAttribute("placeholder", "http://");
   
   var edit = document.createElement("button");
@@ -41,10 +42,13 @@ function add() {
 document.getElementById("add").addEventListener("click", add);
 
 var urls = [];
+var windowSettings;
 
 // Save button functionality
 function save() {
-  var inputs = document.getElementsByTagName("input");
+  var windowSettings = getWindowSettings();
+  
+  var inputs = document.getElementsByName("url");
   for (var i = 0; i < inputs.length; i++) {
     // disables editing of input fields
     inputs[i].disabled = true;
@@ -55,7 +59,10 @@ function save() {
   
   validateURLs();
   
-  browser.storage.local.set({urls});
+  browser.storage.local.set({
+    urls,
+    windowSettings
+  });
 }
 
 function eliminateDuplicates(arr) {
@@ -84,6 +91,24 @@ function validateURLs() {
   }
 }
 
+function getWindowSettings() {
+  var windowTypeRB = document.getElementsByName("window-type"),
+      windowType;
+  
+  for (var i = 0; i < windowTypeRB.length; i++) {
+  	if (windowTypeRB[i].checked)
+    	windowType = windowTypeRB[i].value;
+    else
+    	continue;
+  }
+  
+  var windowSettings = {
+    type: windowType
+  }
+  
+  return windowSettings;
+}
+
 document.getElementById("save").addEventListener("click", save);
 
 // Edit button functionality
@@ -109,24 +134,26 @@ function removeURL(span) {
   browser.storage.local.set({urls});
 }
 
-function loadSavedURLs(item) {
+function loadSavedData(item) {
   var savedURLs = item.urls,
-      inputs = document.getElementsByTagName("input");
+      savedWindowSettings = item.windowSettings,
+      inputs = document.getElementsByName("url"),
+      windowTypeRB = document.getElementsByName("window-type");
+  
+  if (savedWindowSettings.type === "normal")
+    windowTypeRB[0].checked = true;
+  else if (savedWindowSettings.type === "incognito")
+    windowTypeRB[1].checked = true;
   
   for (var i = 0; i < savedURLs.length; i++) {
     add();
-    
-//    console.log("Number of input fields: " + inputs.length);
-//    console.log(savedURLs[i]);
-//    
-//    console.log("Last input field: " + (inputs.length - 1).value);
     inputs[inputs.length - 1].value = savedURLs[i];
-    
     save();
   }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  var savedURLs = browser.storage.local.get("urls");
-  savedURLs.then(loadSavedURLs);
+  var savedData = browser.storage.local.get(["urls", "windowSettings"]);
+  
+  savedData.then(loadSavedData);
 });
