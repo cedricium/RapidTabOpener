@@ -9,7 +9,7 @@
  * @author Cedric Amaya
  */
 
-browser.browserAction.onClicked.addListener(executeByWindowType);
+browser.browserAction.onClicked.addListener(getDataFromStorage);
 
 /**
  * Determines the current window's mode (incognito or not) and with
@@ -81,15 +81,92 @@ function openTabs() {
 //        url: "http://jira.surfcrew.com"
 //      });
   
-  var urls = browser.storage.local.get("urls");
+  var urls = browser.storage.local.get(["urls", "windowSettings"]);
   urls.then(onGot);
 }
 
-function onGot(item) {
-  console.log(item.urls);
+//function onGot(item) {
+//  console.log(item.windowSettings); 
+//  
+//  var urls = item.urls;
+//  
+//  // create tabs based off locally-store URLs
+//  for (var i = 0; i < urls.length; i++) {
+//    var url = urls[i];
+//    console.log(url);
+//    
+//    browser.tabs.create({
+//      index: i,
+//      url: url
+//    });
+//  }
+//}
+
+
+
+/*
+=====================  TESTING BELOW  ==========================
+===========  v1.1.1 - Selection of window type  ================
+*/
+
+var urls,
+    windowSettings,
+    currentWindow;
+
+function getDataFromStorage(window) {
+  currentWindow = window;
   
-  var urls = item.urls;
+  var getting = browser.storage.local.get(["urls", "windowSettings"]);
+  getting.then(determineWindow);
+}
+
+function determineWindow(item) {
+  urls = item.urls;
+  windowSettings = item.windowSettings;
   
+  var windowType = windowSettings.type;
+  
+  console.log("window_type_requested: " + windowType);
+  
+  if (windowType === "incognito" && currentWindow.incognito) {
+    console.log("window_type_determined_path: " + 1);
+    openURLs();
+  }
+  if (windowType === "incognito" && !currentWindow.incognito) {
+    console.log("window_type_determined_path: " + 2);
+    openWindow(windowType);
+  }
+  if (windowType === "normal" && !currentWindow.incognito) {
+    console.log("window_type_determined_path: " + 3);
+    openURLs();
+  }
+  if (windowType === "normal" && currentWindow.incognito) {
+    console.log("window_type_determined_path: " + 4);
+    openWindow(windowType);
+  }
+}
+
+function openWindow(type) {
+  var newWindow;
+  
+  if (type === "normal") {
+    newWindow = browser.windows.create({
+      incognito: false,
+      state: "maximized"
+    });
+  }
+  
+  else if (type === "incognito") {
+    newWindow = browser.windows.create({
+      incognito: true,
+      state: "maximized"
+    });
+  }
+  
+  newWindow.then(openURLs);
+}
+
+function openURLs() {
   for (var i = 0; i < urls.length; i++) {
     var url = urls[i];
     console.log(url);
