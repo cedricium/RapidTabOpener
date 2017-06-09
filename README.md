@@ -17,7 +17,7 @@ Visit [https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/](https://a
 
 1. After installation is complete, direct to "about:addons" then select "Extensions"
 2. Select "Preferences" (Mac) or "Options" (Windows) for RapidTabOpener
-3. Select what type of window you want the tabs to opened in:
+3. Select what type of window you want the tabs opened in:
     - Normal
     - Incognito
 4. Select "Add" to add an input field for the URL you want opened
