@@ -1,3 +1,13 @@
+/**
+ * RapidTabOpener
+ * 
+ * Content script for the options page. Contains all the event listeners
+ * for the various inputs located on the page. Also handles getting
+ * and setting the data stored in storage.local to display properly.
+ *
+ * @author cedricium - Cedric Amaya
+ */
+
 var URLplaceholder = document.getElementById("urls");  
 
 // Add button functionality
@@ -86,8 +96,6 @@ function validateURLs() {
   for (var i = 0; i < urls.length; i++) {
     if (!urls[i].startsWith("http"))
       urls[i] = "http://" + urls[i];
-    
-//    console.log(urls[i]);
   }
 }
 
@@ -126,9 +134,7 @@ function removeURL(span) {
       index = urls.indexOf(urlToRemove);
   
   urls.splice(index, 1);
-  
-//  console.log(urls);
-  
+    
   URLplaceholder.removeChild(span);
   
   browser.storage.local.set({urls});
