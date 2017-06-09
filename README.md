@@ -15,12 +15,12 @@ Visit [https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/](https://a
 
 ### Setup
 
-1. In your browser, direct to [about:addons](about:addons) and select "Preferences" or "Options" for RapidTabOpener
+1. In your browser, direct to "about:addons" and select "Preferences" or "Options" for RapidTabOpener
 2. Select what type of window you want the tabs to opened in:
-  - Normal
-  - Incognito
+    - Normal
+    - Incognito
 3. Select "Add" to add an input field for the URL you want opened
-  - Note: no need for the "http://", but if you're experiencing problems with opening a specific URL try adding it to the input field.
+    - Note: no need for the "http://", but if you're experiencing problems with opening a specific URL try adding it to the input field.
 4. Once you have added the URLs you want opened, select "Save"
 
 Now try it out! Click the <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/tabs-64.png" width="24" height="24" alt="tabs icon" /> icon in the toolbar menu and watch as the URLs you've added open magically. Window preference and URLs will be saved even after all browser windows have been closed so you only need to add them once.
