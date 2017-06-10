@@ -75,23 +75,6 @@ function save() {
   });
 }
 
-function eliminateDuplicates(arr) {
-  var i,
-      len = arr.length,
-      out = [],
-      obj = {};
-  
-  for (i = 0; i < len; i++) {
-    obj[arr[i]] = 0;
-  }
-  
-  for (i in obj) {
-    out.push(i);
-  }
-  
-  return out;
-}
-
 function validateURLs() {
   for (var i = 0; i < urls.length; i++) {
     if (!urls[i].startsWith("http"))
