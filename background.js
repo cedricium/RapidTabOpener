@@ -75,7 +75,15 @@ function openWindow(type) {
   newWindow.then(openURLs);
 }
 
+function closeNewTab(tabs) {
+  var newTab = tabs[tabs.length - 1];
+  var removingNewTab = browser.tabs.remove(newTab.id);
+}
+
 function openURLs() {
+  var querying = browser.tabs.query({currentWindow: true});
+  querying.then(closeNewTab);
+  
   for (var i = 0; i < urls.length; i++) {
     var url = urls[i];
     
