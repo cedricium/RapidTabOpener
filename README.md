@@ -1,4 +1,4 @@
-# RapidTabOpener <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/tabs-64.png" width="32" height="32" alt="tabs icon" />
+# RapidTabOpener <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/icon-128.png" width="64" height="64" alt="tabs icon" />
 
 Firefox Webextension that allows you to open all the websites you want with one click of a button. Stop wasting time opening tab after tab and typing out each URL everyday and instead let RapidTabOpener do the work for you!
 
@@ -24,7 +24,7 @@ Visit [https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/](https://a
     - Note: no need for the "http://", but if you're experiencing problems with opening a specific URL try adding it to the input field.
 5. Once you have added the URLs you want opened, select "Save"
 
-Now try it out! Click the <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/tabs-64.png" width="24" height="24" alt="tabs icon" /> icon in the toolbar menu and watch as the URLs you've added open magically. Window preference and URLs will be saved even after all browser windows have been closed so you only need to add them once.
+Now try it out! Click the <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/icon_action.png" width="24" height="24" alt="tabs icon" /> icon in the toolbar menu and watch as the URLs you've added open magically. Window preference and URLs will be saved even after all browser windows have been closed so you only need to add them once.
 
 ## Permissions
 
@@ -35,4 +35,4 @@ RapidTabOpener uses several permissions to work. What they are and why they're n
 - `tabs`: used to create the new tabs for the user's desired URLs.
 
 ## Special Thanks
-Icons made by [Freepik](http://www.freepik.com) from [Flaticon](http://www.flaticon.com). www.flaticon.com is licensed by [Creative Commons BY 3.0 CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).
+Icons made by Alyssa Clayton ([https://aclayton7464.wixsite.com/portfolio](https://aclayton7464.wixsite.com/portfolio)).
