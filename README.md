@@ -1,4 +1,4 @@
-# RapidTabOpener <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/icon-128.png" width="64" height="64" alt="tabs icon" />
+<img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/icon-128.png" alt="tabs icon" />
 
 Firefox Webextension that allows you to open all the websites you want with one click of a button. Stop wasting time opening tab after tab and typing out each URL everyday and instead let RapidTabOpener do the work for you!
 
