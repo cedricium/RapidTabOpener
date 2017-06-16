@@ -22,8 +22,12 @@ function getDataFromStorage(window) {
 }
 
 function determineWindow(item) {
-  urls = item.urls;
-  windowSettings = item.windowSettings;
+  if (Object.keys(item).length == 0)
+    openOptionsPage();
+  else {
+    urls = item.urls;
+    windowSettings = item.windowSettings;
+  }
   
   var windowType = windowSettings.type;
   
@@ -51,7 +55,7 @@ function openOptionsPage() {
     "type": "basic",
     "title": "Zoinks!",
     "message": "Add some URLs that you want opened.",
-    "iconUrl": "icons/tabs-128.png"
+    "iconUrl": "icons/icon-128.png"
   });
 }
 
