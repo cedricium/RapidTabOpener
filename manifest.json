@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "RapidTabOpener",
-  "version": "1.2.2",
+  "version": "1.2.3",
   
   "description": "A simple browser addon that opens the most frequently used sites in a click of a button.",
   
