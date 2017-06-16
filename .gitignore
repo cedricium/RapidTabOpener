@@ -1,0 +1,8 @@
+# Mac-specific files
+.DS_STORE
+
+# Archive files
+*.zip
+
+# Bash Scripts
+create_zip.sh
