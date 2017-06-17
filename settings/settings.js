@@ -160,11 +160,16 @@ document.querySelector("body").addEventListener("keyup", function(event) {
 // currently added will be saved
 window.onbeforeunload = safeClosing;
 function safeClosing() {
-  save();
-  
   var spans = document.getElementsByTagName("span");
   
-  Object.keys(spans).forEach(function(key) {
-    console.log(spans[key].firstChild.value);
-  });
+  for (var i = 0; i < spans.length; i++) {
+    var span = spans.item(i);
+    
+    if (span.firstChild.value == "") {
+      removeURL(span);
+      i--;
+    }
+  }
+  
+  save();
 }
