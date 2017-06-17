@@ -146,3 +146,25 @@ document.addEventListener("DOMContentLoaded", function() {
   
   savedData.then(loadSavedData);
 });
+
+
+// Listens for keyup events in the 'body' of the page;
+// if keycode == 13 ('Enter' key), triggers the click event for
+// the 'Save' button
+document.querySelector("body").addEventListener("keyup", function(event) {
+  if (event.keyCode == 13)
+    document.getElementById("save").click();
+});
+
+// Safety Measure - if page is closed before user saves, input fields
+// currently added will be saved
+window.onbeforeunload = safeClosing;
+function safeClosing() {
+  save();
+  
+  var spans = document.getElementsByTagName("span");
+  
+  Object.keys(spans).forEach(function(key) {
+    console.log(spans[key].firstChild.value);
+  });
+}
