@@ -67,12 +67,27 @@ function save() {
       urls[i] = inputs[i].value;
   }
   
+  removeEmptyFields();
+  
   validateURLs();
   
   browser.storage.local.set({
     urls,
     windowSettings
   });
+}
+
+function removeEmptyFields() {
+  var spans = document.getElementsByTagName("span");
+  
+  for (var i = 0; i < spans.length; i++) {
+    var span = spans.item(i);
+    
+    if (span.firstChild.value == "") {
+      removeURL(span);
+      i--;
+    }
+  }
 }
 
 function validateURLs() {
@@ -157,19 +172,5 @@ document.querySelector("body").addEventListener("keyup", function(event) {
 });
 
 // Safety Measure - if page is closed before user saves, input fields
-// currently added will be saved
-window.onbeforeunload = safeClosing;
-function safeClosing() {
-  var spans = document.getElementsByTagName("span");
-  
-  for (var i = 0; i < spans.length; i++) {
-    var span = spans.item(i);
-    
-    if (span.firstChild.value == "") {
-      removeURL(span);
-      i--;
-    }
-  }
-  
-  save();
-}
+// currently enabled will be saved
+window.onbeforeunload = save;
