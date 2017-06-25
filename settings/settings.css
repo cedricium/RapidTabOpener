@@ -1,29 +1,50 @@
 html,
 body {
   margin: 0 auto;
-  color: #404040;
+  font-family: 'Fira Sans', sans-serif;
 }
 
-span * {
-  margin: 2px 5px 0px 0px;
+.section {
+  margin-bottom: 12px;
 }
 
-.info {
-  margin: 0 auto;
-  line-height: 0px;
-  
-  font-family: Fira Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Droid Sans,Helvetica Neue,sans-serif;
-  font-size: 90%;
+.title {
+  font-weight: 200;
+  font-size: 33px;
+  color: #0c0c0d;
 }
 
-.windows {
-  padding-bottom: 10px;
+.subtitle {
+  margin: 3px auto;
+  font-weight: 600;
+  font-size: 17px;
+  color: #0c0c0d;
 }
 
-#window-desc {
-  padding-bottom: 15px;
+.body-caption {
+  margin: 3px auto;
+  font-weight: 400;
+  font-size: 15px;
+  color: #737373;
 }
 
-.windows p {
-  margin-bottom: 10px;
+.body-text {
+  font-weight: 400;
+  font-size: 13px;
+  color: #0c0c0d;
+}
+
+#urls {
+  margin-bottom: 12px;
+}
+
+#urls input {
+  padding: 0px 3px;
+  font-family: 'Fira Sans', sans-serif;
+  margin-bottom: 3px;
+}
+
+#urls input,
+#urls button {
+  margin-right: 3px;
 }

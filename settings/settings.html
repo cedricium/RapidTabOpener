@@ -4,46 +4,36 @@
   <head>
     <meta charset="utf-8">
     <link type="text/css" rel="stylesheet" href="settings.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400,500,600" rel="stylesheet">
   </head>
   
   <body>
     
-    <div class="info windows">
-      <h4>Window Type</h4>
-      <p id="window-desc">Select the type of window and whether or not to open a new window when rapid tabs are opened.</p>
+    <p class="title">Window Selection and URLs</p>
+    
+    <div class="section">
+      <p class="subtitle">Window Type</p>
+      <p class="body-caption">Select the type of window you'd like the tabs opened in.</p>
       
-      <input type="radio" name="window-type" value="normal" checked>&nbsp;Normal<br>
-      <input type="radio" name="window-type" value="incognito">&nbsp;Incognito<br>
+      <input id="radio1" type="radio" name="window-type" value="normal" checked>
+      <label for="radio1" class="body-text">Normal</label><br>
+      
+      <input id="radio2" type="radio" name="window-type" value="incognito">
+      <label for="radio2" class="body-text">Incognito</label><br>
       
     </div>
     
-    <div class="info">
-      <h4>Add URLs to Be Opened</h4>
-      <p>Select "Add" to add a new URL you would like to be opened rapidly. Afterwards, select "Save".</p>
+    <div class="section">
+      <p class="subtitle">URLs</p>
+      <p class="body-caption">Select "Add" to add URLs you'd like opened. Once you're finished adding all of the URLs, select "Save" and you're all set.</p>
     </div>
   
     <div id="urls"></div>
     
     <div id="buttons">
-      <br />
       <button id="add">Add</button>
       <button id="save">Save</button>
     </div>
-      
-<!--
-    <div class="info windows">
-      <h4>Window Type</h4>
-      <p>Select the type of window and whether or not to open a new window you want the tabs to be launched in.</p>
-      
-      <small>Window Type</small>
-      <input type="radio" name="window-type" value="regular">&nbsp;Non-Incognito<br>
-      <input type="radio" name="window-type" value="incognito">&nbsp;Incognito<br>
-      
-      <small>Tab Location</small>
-      <input type="radio" name="window-location" value="current">&nbsp;Current Window<br>
-      <input type="radio" name="window-location" value="new">&nbsp;New Window<br>
-    </div>
--->
   
   <script type="text/javascript" src="settings.js"></script>
   </body>
