@@ -1,6 +1,6 @@
 ## About
 
-Firefox Webextension that allows you to open all the websites you want with one click of a button. Stop wasting time opening tab after tab and typing out each URL everyday and instead let RapidTabOpener do the work for you!
+Firefox Webextension that allows you to open all the websites you want with one click of a button. Stop wasting time opening tab after tab and typing out each URL everyday and instead let *RapidTabOpener* do the work for you!
 
 ### Features :star:
 
@@ -12,7 +12,13 @@ Firefox Webextension that allows you to open all the websites you want with one 
 
 ### Install :arrow_down:
 
-Visit [https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/](https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/) and select "Add to Firefox".
+Click the badge below to download the latest version of *RapidTabOpener*.
+
+<p align="center">
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/">
+    <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/settings-page/res/ff_badge.png" width="60%"/>
+  </a>
+</p>
 
 ### Setup  :nut_and_bolt:
 
@@ -30,7 +36,7 @@ Now try it out! Click the <img src="https://raw.githubusercontent.com/cedricium/
 
 ### Permissions :warning:
 
-RapidTabOpener uses several permissions to work. What they are and why they're needed is below.
+*RapidTabOpener* uses several permissions to work. What they are and why they're needed is below.
 
 - `contextMenus`: this is an awesome one, I promise! This is used to create, well, a context menu. Right clicking anywhere on the page or tab will allow you access to the "RapidTabOpener" context menu option, which contains two suboptions: adding the current site and opening the Options Page.
 - `notifications`: used to create the notification when the toolbar button is pressed but no URLs have been specified. `window.alert()` is not allowed for Firefox Webextensions so `notifications` has been used in it's place.
