@@ -14,9 +14,9 @@ Firefox Webextension that allows you to open all the websites you want with one 
 
 Click the badge below to download the latest version of *RapidTabOpener*.
 
-<p align="center">
+<p align="left">
   <a href="https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/">
-    <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/settings-page/res/ff_badge.png" width="60%"/>
+    <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/settings-page/res/ff_badge.png" width="40%"/>
   </a>
 </p>
 
