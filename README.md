@@ -1,19 +1,20 @@
-<img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/icon-128.png" alt="tabs icon" />
+## About
 
 Firefox Webextension that allows you to open all the websites you want with one click of a button. Stop wasting time opening tab after tab and typing out each URL everyday and instead let RapidTabOpener do the work for you!
 
-### Features:
+### Features :star:
 
 - select the window type you want your tabs opened in (normal or incognito)
 - easily add, edit, remove, and save URLs by accessing the Options page
+- context menu options to add a website and open Options page with no need to type anything
 
 ## Getting Started
 
-### Install
+### Install :arrow_down:
 
 Visit [https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/](https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/) and select "Add to Firefox".
 
-### Setup
+### Setup  :nut_and_bolt:
 
 ~~1. After installation is complete, direct to "about:addons" then select "Extensions"~~
 ~~2. Select "Preferences" (Mac) or "Options" (Windows) for RapidTabOpener~~
@@ -27,7 +28,7 @@ Visit [https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/](https://a
 
 Now try it out! Click the <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/icon_action.png" width="22" height="22" alt="tabs icon" /> icon in the toolbar menu and watch as the URLs you've added open magically. Window preference and URLs will be saved even after all browser windows have been closed so you only need to add them once.
 
-## Permissions
+### Permissions :warning:
 
 RapidTabOpener uses several permissions to work. What they are and why they're needed is below.
 
