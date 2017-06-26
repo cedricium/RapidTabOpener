@@ -51,12 +51,10 @@ function determineWindow(item) {
 function openOptionsPage() {
   browser.runtime.openOptionsPage();
   
-  browser.notifications.create({
-    "type": "basic",
-    "title": "Zoinks!",
-    "message": "Add some URLs that you want opened.",
-    "iconUrl": "icons/icon-128.png"
-  });
+  var title = "Oops!",
+      message = "Add some URLs that you want opened.";
+  
+  createNotification(title, message);
 }
 
 function openWindow(type) {
@@ -95,5 +93,68 @@ function openURLs() {
       index: i,
       url: url
     });
+  } 
+}
+
+
+
+browser.contextMenus.create({
+  id: "add_page",
+  title: "Add Page to RapidTabOpener",
+  type: "normal",
+  contexts: [
+    "page",
+    "tab"
+  ],
+  onclick: listener
+});
+
+browser.contextMenus.create({
+  id: "open_options_page",
+  title: "Open Options Page",
+  type: "normal",
+  contexts: [
+    "page",
+    "tab"
+  ],
+  onclick: listener
+});
+
+function listener(info, tab) {
+  if (info.menuItemId == "open_options_page")
+    browser.runtime.openOptionsPage();
+  
+  else {  // for handling the add_page context
+    var getting = browser.storage.local.get(["urls"]);
+
+    getting.then(function(item) {
+      addURL(info, item);
+    });
   }
+}
+
+function addURL(info, item) {
+  console.log(item.urls);
+  
+  var urls = item.urls,
+      urlToAdd = info.pageUrl;
+  
+  urls.push(urlToAdd);
+  
+  browser.storage.local.set({ urls });
+  
+  var title = "Website Added!",
+      message = 'The following URL was added to your RapidTabs: "' +
+        urlToAdd + '".';
+  
+  createNotification(title, message);
+}
+
+function createNotification(heading, message) {
+  browser.notifications.create({
+    "type": "basic",
+    "title": heading,
+    "message": message,
+    "iconUrl": "icons/icon-128.png"
+  });
 }
