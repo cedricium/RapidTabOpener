@@ -96,8 +96,6 @@ function openURLs() {
   } 
 }
 
-
-
 browser.contextMenus.create({
   id: "add_page",
   title: "Add Page to RapidTabOpener",
@@ -134,8 +132,6 @@ function listener(info, tab) {
 }
 
 function addURL(info, item) {
-  console.log(item.urls);
-  
   var urls = item.urls,
       urlToAdd = info.pageUrl;
   
