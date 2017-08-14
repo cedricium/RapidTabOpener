@@ -16,7 +16,7 @@ Click the badge below to download the latest version of *RapidTabOpener*.
 
 <p align="left">
   <a href="https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/">
-    <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/settings-page/res/ff_badge.png" width="40%"/>
+    <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/settings-page/res/ff_badge.png" width="25%"/>
   </a>
 </p>
 
