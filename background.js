@@ -8,6 +8,16 @@
  * @author cedricium - Cedric Amaya
  */
 
+(function setDefaultSettings() {
+  var urls = [];
+  var windowSettings = {type: 'normal'};
+  
+  browser.storage.local.set({
+    urls,
+    windowSettings
+  });
+})();
+
 browser.browserAction.onClicked.addListener(getDataFromStorage);
 
 var urls,
