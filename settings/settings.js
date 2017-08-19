@@ -174,3 +174,23 @@ document.querySelector("body").addEventListener("keyup", function(event) {
 // Safety Measure - if page is closed before user saves, input fields
 // currently enabled will be saved
 window.onbeforeunload = save;
+
+// onMessage listener from background.js that updates open Options page
+// when a website is added via the context menu - see #10
+browser.runtime.onMessage.addListener((message) => {
+  var savedData = browser.storage.local.get(["urls"]);
+
+  savedData.then((item) => {
+    var savedURLs = item.urls,
+        inputs = document.getElementsByName("url"),
+        latestURL = '';
+
+    latestURL = savedURLs[savedURLs.length - 1];
+
+    add();
+    inputs[inputs.length - 1].value = latestURL;
+    save();
+  });
+});
+
+browser.runtime.connect();

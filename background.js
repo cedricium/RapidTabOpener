@@ -148,7 +148,11 @@ function addURL(info, item) {
   urls.push(urlToAdd);
   
   browser.storage.local.set({ urls });
-  
+
+  browser.runtime.sendMessage({
+    message: 'URL added via context menu.'
+  });
+
   var title = "Website Added!",
       message = 'The following URL was added to your RapidTabs: "' +
         urlToAdd + '".';
