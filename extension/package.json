@@ -1,6 +1,6 @@
 {
-  "name": "extension",
-  "version": "0.1.0",
+  "name": "RapidTabOpener",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -15,8 +15,7 @@
     "vue": "^2.5.16",
     "vue-swatches": "^1.0.1",
     "vuex": "^3.0.1",
-    "vuex-persistedstate": "^2.5.4",
-    "vuex-webextensions": "^1.2.1"
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-rc.10",
