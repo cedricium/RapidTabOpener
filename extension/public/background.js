@@ -1,6 +1,6 @@
 /**
  * RapidTabOpener
- * 
+ *
  * Action to be executed when toolbar button is clicked. Determines the
  * current window mode and the desired window type then with that
  * information either opens a new window first or the specified URLs.
@@ -11,7 +11,7 @@
 // (function setDefaultSettings() {
 //   var urls = [];
 //   var windowSettings = {type: 'normal'};
-  
+
 //   browser.storage.local.set({
 //     urls,
 //     windowSettings
@@ -26,7 +26,7 @@ var urls,
 
 function getDataFromStorage(window) {
   currentWindow = window;
-  
+
   var getting = browser.storage.local.get(["urls", "windowSettings"]);
   getting.then(determineWindow);
 }
@@ -38,21 +38,21 @@ function determineWindow(item) {
     urls = item.urls;
     windowSettings = item.windowSettings;
   }
-  
+
   var windowType = windowSettings.type;
-  
+
   if (urls.length <= 0)
     openOptionsPage();
   else {
     if (windowType === "incognito" && currentWindow.incognito)
       openURLs();
-      
+
     if (windowType === "incognito" && !currentWindow.incognito)
       openWindow(windowType);
-      
+
     if (windowType === "normal" && !currentWindow.incognito)
       openURLs();
-    
+
     if (windowType === "normal" && currentWindow.incognito)
       openWindow(windowType);
   }
@@ -60,16 +60,16 @@ function determineWindow(item) {
 
 function openOptionsPage() {
   browser.runtime.openOptionsPage();
-  
+
   var title = "Oops!",
       message = "Add some URLs that you want opened.";
-  
+
   createNotification(title, message);
 }
 
 function openWindow(type) {
   var newWindow;
-  
+
   if (type === "normal") {
     newWindow = browser.windows.create({
       incognito: false,
@@ -83,7 +83,7 @@ function openWindow(type) {
       state: "maximized"
     });
   }
-  
+
   newWindow.then(openURLs);
 }
 
@@ -95,15 +95,15 @@ function closeNewTab(tabs) {
 function openURLs() {
   var querying = browser.tabs.query({currentWindow: true});
   querying.then(closeNewTab);
-  
+
   for (var i = 0; i < urls.length; i++) {
     var url = urls[i];
-    
+
     browser.tabs.create({
       index: i,
       url: url
     });
-  } 
+  }
 }
 
 browser.contextMenus.create({
@@ -131,7 +131,7 @@ browser.contextMenus.create({
 function listener(info, tab) {
   if (info.menuItemId == "open_options_page")
     browser.runtime.openOptionsPage();
-  
+
   else {  // for handling the add_page context
     var getting = browser.storage.local.get(["urls"]);
 
@@ -144,9 +144,9 @@ function listener(info, tab) {
 function addURL(info, item) {
   var urls = item.urls,
       urlToAdd = info.pageUrl;
-  
+
   urls.push(urlToAdd);
-  
+
   browser.storage.local.set({ urls });
 
   browser.runtime.sendMessage({
@@ -156,7 +156,7 @@ function addURL(info, item) {
   var title = "Website Added!",
       message = 'The following URL was added to your RapidTabs: "' +
         urlToAdd + '".';
-  
+
   createNotification(title, message);
 }
 
@@ -175,7 +175,7 @@ function createNotification(heading, message) {
  * Below: RapidTabOpener rewrite (groups feature)
  */
 
-function openLinks(tabs) {
+function openTabs(tabs) {
   tabs.forEach((tab, i) => {
     browser.tabs.create({
       index: i,
@@ -184,9 +184,35 @@ function openLinks(tabs) {
   });
 }
 
+function createWindow(type, tabs) {
+  const incognito = type === 'private' ? true : false;
+  browser.windows.create({
+    incognito: incognito,
+    state: 'maximized',
+    url: tabs
+  });
+}
+
+async function handleOpeningTabs(group) {
+  const {location, type} = group.windowSettings;
+  const requestsIncognito = type === 'private' ? true : false;
+  const currentWindow = (await browser.windows.getCurrent());
+
+  if (currentWindow.incognito !== requestsIncognito || location === 'new') {
+    await createWindow(type, group.tabs);
+  } else {
+    openTabs(group.tabs);
+  }
+}
+
 function handleMessage(request, sender, sendResponse) {
-  console.log(request);
-  openLinks(request.open.tabs);
+  switch (request.action) {
+    case 'open':
+      handleOpeningTabs(request.group);
+      break;
+    default:
+      break;
+  }
 }
 
 browser.runtime.onMessage.addListener(handleMessage);

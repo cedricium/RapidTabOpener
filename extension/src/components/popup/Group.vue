@@ -34,7 +34,7 @@ export default {
   /* eslint-disable no-undef */
   methods: {
     openGroup(group) {
-      browser.runtime.sendMessage({open: group});
+      browser.runtime.sendMessage({action: 'open', group: group});
       window.close();
     }
   },
