@@ -11,11 +11,14 @@
 
 <script>
 export default {
+  /* eslint-disable no-undef */
   methods: {
     openOptionsPage() {
       browser.runtime.openOptionsPage();
+      window.close();
     }
   }
+  /* eslint-enable no-undef */
 };
 </script>
 

@@ -10,6 +10,9 @@
         <Group v-for="(group, index) in oddGroups" :key="index" :group="group"></Group>
       </div>
     </div>
+    <div v-if="groups.length !== 0" class="content has-text-centered">
+      <small class="is-block"><a class="has-text-info" @click="openOptionsPage">Options page</a></small>
+    </div>
   </section>
 </template>
 
@@ -36,11 +39,20 @@ export default {
       return this.groups.filter((group, index) => index % 2 !== 0);
     }
   },
+  /* eslint-disable no-undef */
+  methods: {
+    openOptionsPage() {
+      browser.runtime.openOptionsPage();
+      window.close();
+    }
+  }
+  /* eslint-enable no-undef */
 };
 </script>
 
 <style scoped>
 section.section {
-  padding-top: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 1rem;
 }
 </style>
