@@ -5,9 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:watch": "vue-cli-service build --watch",
+    "build:watch": "vue-cli-service build --mode=production --no-clean --watch",
     "lint": "vue-cli-service lint",
-    "start": "npm run build && web-ext run -f nightly -s dist/"
+    "start": "web-ext run -f nightly -s dist/ -u='about:debugging' & npm run build:watch"
   },
   "dependencies": {
     "buefy": "^0.6.6",
