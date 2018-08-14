@@ -1,47 +1,53 @@
-## About
+# <img src="extension/public/icons/icon.png" width="36" align="left"> RapidTabOpener
 
-Firefox Webextension that allows you to open all the websites you want with one click of a button. Stop wasting time opening tab after tab and typing out each URL everyday and instead let *RapidTabOpener* do the work for you!
+> RapidTabOpener is a browser extension which enables the ability to open as many URLs as one wants in a single click of a button. Gone are the days of needing to take 10 minutes opening tabs and typing the same URLs everyday - with RapidTabOpener, one simply needs to select the group of tabs they want to open. Minutes of lost productivity cut down to a split second; RapidTabOpener will have you managing your browser sessions like a boss.
 
-### Features :star:
+## Installing
+Before installing, you will need:
+- `node` version >= 8
+- `npm`
+- `git`
 
-- select the window type you want your tabs opened in (normal or incognito)
-- easily add, edit, remove, and save URLs by accessing the Options page
-- context menu options to add a website and open Options page with no need to type anything
+Once you have those installed:
 
-## Getting Started
+```shell
+# Clone this repository
+$ git clone https://github.com/cedricium/RapidTabOpener
 
-### Install :arrow_down:
+# Go into the extension repository
+$ cd RapidTabOpener/extension
 
-Click the badge below to download the latest version of *RapidTabOpener*.
+# Install the dependencies
+$ npm install
+```
 
-<p align="left">
-  <a href="https://addons.mozilla.org/en-US/firefox/addon/rapidtabopener/">
-    <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/settings-page/res/ff_badge.png" width="25%"/>
-  </a>
-</p>
+## Building
+To build the extension for use in the browser, use the `build` script:
 
-### Setup  :nut_and_bolt:
+```shell
+$ npm run build
+```
 
-~~1. After installation is complete, direct to "about:addons" then select "Extensions"~~
-~~2. Select "Preferences" (Mac) or "Options" (Windows) for RapidTabOpener~~
-1. After installation is complete, click the toolbar button (looks like <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/icon_action.png" width="22" height="22" alt="tabs icon" />) to be directed immediately to the Options page. [NEW IN `v1.2.3`]
-2. Select what type of window you want the tabs opened in:
-    - Normal
-    - Incognito
-3. Select "Add" to add an input field for the URL you want opened
-    - Note: no need for the "http://", but if you're experiencing problems with opening a specific URL try adding it to the input field.
-4. Once you have added the URLs you want opened, select "Save"
+This will create a `dist/` directory which contains all the necessary code bundled for a browser environment.
 
-Now try it out! Click the <img src="https://raw.githubusercontent.com/cedricium/RapidTabOpener/master/icons/icon_action.png" width="22" height="22" alt="tabs icon" /> icon in the toolbar menu and watch as the URLs you've added open magically. Window preference and URLs will be saved even after all browser windows have been closed so you only need to add them once.
+## Developing
+Once you have the extension built, you're ready to begin testing. Use the `start` script to have the extension loaded in the browser (currently only Firefox supported):
 
-### Permissions :warning:
+```shell
+$ npm start
+```
 
-*RapidTabOpener* uses several permissions to work. What they are and why they're needed is below.
+`npm start` builds the extension then uses the `web-ext` CLI tool to load the `dist/` directory in Firefox. Any changes made while `npm start` is running will cause the extension to be live reloaded, making development a tad easier.
 
-- `contextMenus`: this is an awesome one, I promise! This is used to create, well, a context menu. Right clicking anywhere on the page or tab will allow you access to the "RapidTabOpener" context menu option, which contains two suboptions: adding the current site and opening the Options Page.
-- `notifications`: used to create the notification when the toolbar button is pressed but no URLs have been specified. `window.alert()` is not allowed for Firefox Webextensions so `notifications` has been used in it's place.
-- `storage`: specifically `storage.local` - used to store the URLs and window-type preference even after Firefox has been closed. Data is not collected or sent anywhere, see `background.js` and `settings.js` for how storage is being handled.
-- `tabs`: used to create the new tabs for the user's desired URLs.
+## Contributing
+Your contributions are always welcome! See an issue you want to tackle or have an idea for a feature you'd like implemented? Just open a pull-request with a short explanation of the changes and I'd be happy to review it.
 
-## Special Thanks
-Icons made by Alyssa Clayton ([https://aclayton7464.wixsite.com/portfolio](https://aclayton7464.wixsite.com/portfolio)).
+To get started:
+
+1. **Fork** the repo on GitHub
+2. **Clone** the project to your own machine
+3. **Commit** changes to your own branch
+4. **Push** your work back up to your fork
+5. Submit a **Pull request** so that we can review your changes
+
+> Note: Be sure to merge the latest from "upstream" before making a pull request!
