@@ -44,7 +44,9 @@ async function handleOpeningTabs(group) {
   const currentWindow = (await browser.windows.getCurrent());
 
   if (currentWindow.incognito !== requestsIncognito || location === 'new') {
-    await createWindow(type, group.tabs);
+    if (group.tabs.length !== 0) {
+      await createWindow(type, group.tabs);
+    }
   } else {
     openTabs(group.tabs);
   }

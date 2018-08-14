@@ -19,16 +19,6 @@ export default {
   props: ['group'],
   data() {
     return {
-      colors: [
-        'red',
-        'orange',
-        'yellow',
-        'green',
-        'teal',
-        'blue',
-        'purple',
-        'pink',
-      ]
     }
   },
   /* eslint-disable no-undef */
@@ -39,11 +29,6 @@ export default {
     }
   },
   /* eslint-enable no-undef */
-  computed: {
-    randomColor() {
-      return this.colors[Math.floor(Math.random() * this.colors.length)];
-    }
-  }
 };
 </script>
 
@@ -56,7 +41,6 @@ export default {
   --teal-category: rgb(90, 200, 250);
   --blue-category: rgb(0, 122, 255);
   --purple-category: rgb(88, 86, 214);
-  --pink-category: rgb(255, 45, 85);
 }
 
 .box:not(body) {
@@ -79,5 +63,4 @@ div.category.green { border-color:  var(--green-category); }
 div.category.teal { border-color:   var(--teal-category); }
 div.category.blue { border-color:   var(--blue-category); }
 div.category.purple { border-color: var(--purple-category); }
-div.category.pink { border-color:   var(--pink-category); }
 </style>
