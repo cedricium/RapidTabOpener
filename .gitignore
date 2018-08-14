@@ -1,8 +1,21 @@
-# Mac-specific files
-.DS_STORE
+.DS_Store
+*/node_modules
+*/dist
 
-# Archive files
-*.zip
+# local env files
+.env.local
+.env.*.local
 
-# Bash Scripts
-create_zip.sh
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
